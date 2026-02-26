@@ -105,7 +105,7 @@ body { background: #F8FAFC; }
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0;
+  gap: 12px;
   animation: fadeUp 0.6s 0.6s both;
 }
 .btn-red {
@@ -507,6 +507,28 @@ body { background: #F8FAFC; }
   .form-card { padding: 28px 22px; }
   .pathway-wrap, .inst-wrap, .why-wrap, .enquiry-wrap { padding: 0 20px; }
 }
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: transparent;
+    color: #db1010;
+    border: 2px solid rgba(223, 7, 7, 0.7);
+    border-radius: 8px;
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+}
+.btn-outline:hover {
+    background: #fff;
+    color: var(--red);
+    border-color: #df0a0a;
+}
 </style>
 
 <!-- ═══════════════ HERO ═══════════════ -->
@@ -522,8 +544,13 @@ body { background: #F8FAFC; }
       <p class="hero-sub">FREE REGISTRATION NOW</p>
       <p class="hero-sub-note">Practical, affordable and career-focused education designed for students from Ambur &amp; Vaniyambadi and beyond.</p>
       <div class="hero-buttons">
-        <a href="contact.php" class="btn-red"><i class="fas fa-graduation-cap"></i> Join Course</a>
-      </div>
+    <button type="button" onclick="openOnlineApplyFromOptions()" class="btn-red">
+        <i class="fas fa-laptop"></i> Apply Online
+    </button>
+    <button type="button" onclick="downloadApplicationForm()" class="btn-outline">
+        <i class="fas fa-file-arrow-down"></i> Download Application
+    </button>
+    </div>
     </div>
 
     <div class="hero-visual">

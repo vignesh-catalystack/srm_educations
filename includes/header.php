@@ -718,7 +718,7 @@ $hasCustomLogo = !empty($logoPath);
 
         <!-- PHONE — unchanged -->
         <a href="tel:+917373733765" class="header-phone">
-            <i class="fas fa-phone-alt"></i> +91 73 73 73 37 65
+            <i class="fas fa-phone-alt"></i> +91 73 73 73 37 63
         </a>
 
         <!-- HAMBURGER — unchanged -->

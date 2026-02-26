@@ -367,11 +367,12 @@ include_once '../includes/header.php';
         background: linear-gradient(90deg, #F59E0B, #F59E0B);
     }
 
-    .branch-image {
+    /* Map iframe replacing image */
+    .branch-map {
         width: 100%;
         height: 200px;
-        object-fit: cover;
-        background: linear-gradient(135deg, #F8FAFC, #F8FAFC);
+        border: none;
+        display: block;
     }
 
     .branch-content {
@@ -635,8 +636,10 @@ include_once '../includes/header.php';
                     <h3>Call Us</h3>
                 </div>
                 <p>
-                    Ambur: <a href="tel:7373733765">73 73 73 37 65</a><br>
-                    Vaniyambadi: <a href="tel:7373733763">73 73 73 37 63</a>
+                 Vaniyambadi: <a href="tel:7373733763">73 73 73 37 63</a> 
+                 <br>   
+                Ambur: <a href="tel:7373733765">73 73 73 37 65</a><br>
+                   
                 </p>
             </div>
 
@@ -668,14 +671,14 @@ include_once '../includes/header.php';
         </div>
 
         <!-- Contact Form -->
-        <!-- <div class="contact-form-wrapper">
+        <div class="contact-form-wrapper">
             <h3 class="form-title">Send Us a Message</h3>
             <p class="form-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
 
-            <form onsubmit="submitEnquiry(event)">
+            <form id="enquiryForm" onsubmit="submitEnquiry(event)">
                 <div class="form-group">
-                    <label class="form-label" for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
+                    <label class="form-label" for="full_name">Full Name *</label>
+                    <input type="text" id="full_name" name="full_name" class="form-input" placeholder="Enter your full name" required>
                 </div>
 
                 <div class="form-group">
@@ -700,58 +703,16 @@ include_once '../includes/header.php';
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="message">Your Message</label>
-                    <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your educational goals and any questions you have..."></textarea>
+                    <label class="form-label" for="message">Your Message *</label>
+                    <textarea id="message" name="message" class="form-textarea" placeholder="How can we help you?" required></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="submitBtn">
                     <i class="fas fa-paper-plane"></i>
                     <span>Send Message</span>
                 </button>
             </form>
-        </div> -->
-        <div class="contact-form-wrapper">
-    <h3 class="form-title">Send Us a Message</h3>
-    <p class="form-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
-
-    <form id="enquiryForm" onsubmit="submitEnquiry(event)">
-        <div class="form-group">
-            <label class="form-label" for="full_name">Full Name *</label>
-            <input type="text" id="full_name" name="full_name" class="form-input" placeholder="Enter your full name" required>
         </div>
-
-        <div class="form-group">
-            <label class="form-label" for="email">Email Address *</label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label" for="phone">Phone Number *</label>
-            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98765 43210" required>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label" for="course">Interested Course</label>
-            <select id="course" name="course" class="form-select">
-                <option value="">Select a course</option>
-                <option value="paramedical">Paramedical Sciences</option>
-                <option value="degree">Degree Programs</option>
-                <option value="computer">Computer Courses</option>
-                <option value="other">Other / Not Sure</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label" for="message">Your Message *</label>
-            <textarea id="message" name="message" class="form-textarea" placeholder="How can we help you?" required></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn" id="submitBtn">
-            <i class="fas fa-paper-plane"></i>
-            <span>Send Message</span>
-        </button>
-    </form>
-</div>
     </div>
 </section>
 
@@ -765,10 +726,20 @@ include_once '../includes/header.php';
         </div>
 
         <div class="branches-grid">
+
             <!-- Ambur Branch -->
             <div class="branch-card">
                 <div class="branch-header"></div>
-                <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800" alt="Ambur Campus" class="branch-image">
+
+                <!-- Google Map — Ambur -->
+                <iframe
+                    class="branch-map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d78.6833!3d12.7833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDQ3JzAwLjAiTiA3OMKwNDEnMDAuMCJF!5e0!3m2!1sen!2sin!4v1!5m2!1sen!2sin&q=SRM+Education+Ambur+Anantha+Nagar+Bye+Pass+Road"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
                 <div class="branch-content">
                     <span class="branch-tag">Main Branch</span>
                     <h3 class="branch-name">Ambur Campus</h3>
@@ -806,7 +777,16 @@ include_once '../includes/header.php';
             <!-- Vaniyambadi Branch -->
             <div class="branch-card">
                 <div class="branch-header"></div>
-                <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&q=80&w=800" alt="Vaniyambadi Campus" class="branch-image">
+
+                <!-- Google Map — Vaniyambadi -->
+                <iframe
+                    class="branch-map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d78.6200!3d12.6833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDQxJzAwLjAiTiA3OMKwMzcnMTIuMCJF!5e0!3m2!1sen!2sin!4v1!5m2!1sen!2sin&q=SRM+Education+Vaniyambadi+Malangu+Road+Noorullapet"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
                 <div class="branch-content">
                     <span class="branch-tag">City Branch</span>
                     <h3 class="branch-name">Vaniyambadi Campus</h3>
@@ -840,6 +820,7 @@ include_once '../includes/header.php';
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -866,6 +847,7 @@ include_once '../includes/header.php';
         </div>
     </div>
 </section>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 async function submitEnquiry(event) {
@@ -876,14 +858,12 @@ async function submitEnquiry(event) {
     const btnText = btn.querySelector('span');
     const originalText = btnText.innerText;
     
-    // UI: Loading State
     btn.disabled = true;
     btnText.innerText = 'Sending...';
 
     const formData = new FormData(form);
 
     try {
-        // Change this path if your PHP file is named differently
         const response = await fetch('../save-enquiry.php', {
             method: 'POST',
             body: formData
@@ -922,6 +902,3 @@ async function submitEnquiry(event) {
     }
 }
 </script>
-<?php 
-
-?>
