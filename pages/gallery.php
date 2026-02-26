@@ -1,5 +1,32 @@
 <?php include_once '../includes/header.php'; ?>
+<?php
+require_once '../connect.php';
 
+try {
+    // 1. Fetch Categories that actually have active media
+    $categories = $pdo->query("
+        SELECT DISTINCT gc.name, gc.slug 
+        FROM gallery_categories gc
+        JOIN gallery_media gm ON gc.id = gm.category_id
+        WHERE gc.status = 1 AND gm.status = 1
+        ORDER BY gc.name ASC
+    ")->fetchAll(PDO::FETCH_ASSOC);
+
+    // 2. Fetch all active Media
+    $media = $pdo->query("
+        SELECT gm.*, gc.slug
+        FROM gallery_media gm
+        JOIN gallery_categories gc ON gc.id = gm.category_id
+        WHERE gm.status = 1
+          AND gc.status = 1
+        ORDER BY gm.sort_order ASC, gm.created_at DESC
+    ")->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (Exception $e) {
+    $categories = [];
+    $media = [];
+}
+?>
 <style>
     :root {
         --srm-navy: #1E293B;
@@ -220,18 +247,15 @@ $classroomImages = array_values($classroomImages);
         <span class="mobile-filter-label">Filter Category</span>
         <div class="mobile-select-wrap">
             <select id="mobileFilter" aria-label="Filter gallery category">
-                <option value="all">All</option>
-                <option value="classroom">Classroom Activities</option>
-                <option value="lab">Lab Sessions</option>
-                <option value="workshop">Student Workshops</option>
-                <option value="events">Campus Events</option>
-                <option value="placement">Placement Drives</option>
-                <option value="annual">Annual Celebrations</option>
-            </select>
+    <option value="all">All</option>
+    <?php foreach ($categories as $cat): ?>
+        <option value="<?= $cat['slug'] ?>"><?= htmlspecialchars($cat['name']) ?></option>
+    <?php endforeach; ?>
+</select>
         </div>
     </div>
 
-    <div class="filter-bubbles" id="filterBubbles">
+    <!-- <div class="filter-bubbles" id="filterBubbles">
         <button type="button" class="filter-btn active" data-filter="all">All</button>
         <button type="button" class="filter-btn" data-filter="classroom">Classroom Activities</button>
         <button type="button" class="filter-btn" data-filter="lab">Lab Sessions</button>
@@ -239,8 +263,17 @@ $classroomImages = array_values($classroomImages);
         <button type="button" class="filter-btn" data-filter="events">Campus Events</button>
         <button type="button" class="filter-btn" data-filter="placement">Placement Drives</button>
         <button type="button" class="filter-btn" data-filter="annual">Annual Celebrations</button>
-    </div>
-
+    </div> -->
+    <div class="filter-bubbles">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <?php foreach ($categories as $cat): ?>
+        <button class="filter-btn" data-filter="<?= $cat['slug'] ?>">
+            <?= htmlspecialchars($cat['name']) ?>
+        </button>
+    <?php endforeach; ?>
+</div>
+    
+<!-- 
     <section class="masonry-grid" id="masonryGrid">
         <?php foreach ($classroomImages as $index => $classroomImage): ?>
             <?php $classroomFile = basename($classroomImage); ?>
@@ -272,7 +305,26 @@ $classroomImages = array_values($classroomImages);
         <figure class="gallery-item" data-category="placement">
             <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80" alt="Placement drive 2">
         </figure>
-    </section>
+    </section> -->
+    <section class="masonry-grid" id="masonryGrid">
+    <?php foreach ($media as $item): ?>
+        <figure class="gallery-item" data-category="<?= $item['slug'] ?>">
+            
+            <?php if ($item['type'] === 'image'): ?>
+                <img src="../<?= $item['file_path'] ?>" alt="">
+            <?php else: ?>
+                <video controls>
+                    <source src="../<?= $item['file_path'] ?>" type="video/mp4">
+                </video>
+            <?php endif; ?>
+        
+        </figure>
+    <?php endforeach; ?>
+</section>
+
+    
+
+
     <p id="emptyState" class="gallery-empty">No images found for this category.</p>
 </main>
 

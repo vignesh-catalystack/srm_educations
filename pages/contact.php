@@ -668,11 +668,11 @@ include_once '../includes/header.php';
         </div>
 
         <!-- Contact Form -->
-        <div class="contact-form-wrapper">
+        <!-- <div class="contact-form-wrapper">
             <h3 class="form-title">Send Us a Message</h3>
             <p class="form-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
 
-            <form action="#" method="POST">
+            <form onsubmit="submitEnquiry(event)">
                 <div class="form-group">
                     <label class="form-label" for="name">Full Name *</label>
                     <input type="text" id="name" name="name" class="form-input" placeholder="Enter your full name" required>
@@ -709,7 +709,49 @@ include_once '../includes/header.php';
                     <span>Send Message</span>
                 </button>
             </form>
+        </div> -->
+        <div class="contact-form-wrapper">
+    <h3 class="form-title">Send Us a Message</h3>
+    <p class="form-subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
+
+    <form id="enquiryForm" onsubmit="submitEnquiry(event)">
+        <div class="form-group">
+            <label class="form-label" for="full_name">Full Name *</label>
+            <input type="text" id="full_name" name="full_name" class="form-input" placeholder="Enter your full name" required>
         </div>
+
+        <div class="form-group">
+            <label class="form-label" for="email">Email Address *</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98765 43210" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="course">Interested Course</label>
+            <select id="course" name="course" class="form-select">
+                <option value="">Select a course</option>
+                <option value="paramedical">Paramedical Sciences</option>
+                <option value="degree">Degree Programs</option>
+                <option value="computer">Computer Courses</option>
+                <option value="other">Other / Not Sure</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="message">Your Message *</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="How can we help you?" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+            <i class="fas fa-paper-plane"></i>
+            <span>Send Message</span>
+        </button>
+    </form>
+</div>
     </div>
 </section>
 
@@ -749,7 +791,7 @@ include_once '../includes/header.php';
                     </div>
 
                     <div class="branch-actions">
-                        <a href="https://maps.google.com" target="_blank" class="map-btn">
+                        <a href="https://maps.app.goo.gl/ZBmaTmjGtuJY674RA" target="_blank" class="map-btn">
                             <i class="fas fa-map-location-dot"></i>
                             <span>Open Map</span>
                         </a>
@@ -787,7 +829,7 @@ include_once '../includes/header.php';
                     </div>
 
                     <div class="branch-actions">
-                        <a href="https://maps.google.com" target="_blank" class="map-btn">
+                        <a href="https://maps.app.goo.gl/d9CoMPqxD6wKN5VW9" target="_blank" class="map-btn">
                             <i class="fas fa-map-location-dot"></i>
                             <span>Open Map</span>
                         </a>
@@ -813,7 +855,7 @@ include_once '../includes/header.php';
         </p>
         
         <div class="cta-buttons">
-            <a href="#" class="btn-primary">
+            <a href="#" onclick="openApplyModal(); return false;" class="btn-primary">
                 <i class="fas fa-file-alt"></i>
                 <span>Apply Online</span>
             </a>
@@ -824,7 +866,62 @@ include_once '../includes/header.php';
         </div>
     </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+async function submitEnquiry(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const btn = document.getElementById('submitBtn');
+    const btnText = btn.querySelector('span');
+    const originalText = btnText.innerText;
+    
+    // UI: Loading State
+    btn.disabled = true;
+    btnText.innerText = 'Sending...';
 
+    const formData = new FormData(form);
+
+    try {
+        // Change this path if your PHP file is named differently
+        const response = await fetch('../save-enquiry.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) throw new Error('Server error');
+        
+        const result = await response.json();
+
+        if (result.success === true) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Enquiry Sent!',
+                text: 'We have received your message and will contact you shortly.',
+                confirmButtonColor: '#F59E0B'
+            });
+            form.reset();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Missing Fields',
+                text: 'Please ensure all required fields are filled out correctly.',
+                confirmButtonColor: '#1E293B'
+            });
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Submission Failed',
+            text: 'Connection error. Please try again later.',
+            confirmButtonColor: '#1E293B'
+        });
+    } finally {
+        btn.disabled = false;
+        btnText.innerText = originalText;
+    }
+}
+</script>
 <?php 
 
 ?>

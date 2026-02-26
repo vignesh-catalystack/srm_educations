@@ -616,16 +616,16 @@ body { background: #F8FAFC; }
           <div class="inst-card-tag">Academic Wing</div>
           <div class="inst-card-title">Paramedical<br>Sciences</div>
           <div class="inst-card-desc">Lab Tech, Radiology, and OT assistance with practical hospital exposure.</div>
-          <a href="institution.php" class="btn-inst white">Explore Institute <i class="fas fa-arrow-right"></i></a>
+          <a href="all_institutions/paramedical.php" class="btn-inst white">Explore Institute <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="inst-card">
         <img src="../assets/images/our_inst_degree.png" alt="Degree Programs">
         <div class="inst-card-body">
-          <div class="inst-card-tag">UGC Approved</div>
-          <div class="inst-card-title">Degree<br>Programs</div>
-          <div class="inst-card-desc">Globally recognized BSc and professional degree courses.</div>
-          <a href="institution.php" class="btn-inst sky">Explore Institute <i class="fas fa-arrow-right"></i></a>
+          <div class="inst-card-tag">International standard</div>
+          <div class="inst-card-title">Spoken<br>English</div>
+          <div class="inst-card-desc">Globally Spoken English courses.</div>
+          <a href="all_institutions/spoken-english.php" class="btn-inst sky">Explore Institute <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="inst-card">
@@ -634,7 +634,7 @@ body { background: #F8FAFC; }
           <div class="inst-card-tag">Skill Center</div>
           <div class="inst-card-title">SRM Computer<br>Center</div>
           <div class="inst-card-desc">Industry-aligned IT training and Full Stack development.</div>
-          <a href="institution.php" class="btn-inst white">Explore Institute <i class="fas fa-arrow-right"></i></a>
+          <a href="all_institutions/computer-center.php" class="btn-inst white">Explore Institute <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -682,7 +682,7 @@ body { background: #F8FAFC; }
           <div class="enq-feat"><div class="enq-feat-icon"><i class="fas fa-check"></i></div> Flexible fee &amp; EMI options</div>
         </div>
       </div>
-      <div class="form-card">
+      <!-- <div class="form-card">
         <h3>Apply Now</h3>
         <p>Fill the form and we'll contact you within 24 hours</p>
         <form>
@@ -700,7 +700,39 @@ body { background: #F8FAFC; }
           </div>
           <button type="submit" class="form-submit"><i class="fas fa-paper-plane"></i>&nbsp; Submit Application</button>
         </form>
-      </div>
+      </div> -->
+      <div class="form-card">
+  <h3>Apply Now</h3>
+  <p>Fill the form and we'll contact you within 24 hours</p>
+  <form id="homeEnquiryForm" onsubmit="submitEnquiry(event)">
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" name="full_name" placeholder="Enter your full name" required>
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" name="email" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" name="phone" placeholder="Enter your mobile number" required>
+    </div>
+    <div class="form-group">
+      <label>Programme Interest</label>
+      <select name="course">
+        <option value="">Select a programme</option>
+        <option value="Paramedical Sciences">Paramedical Sciences</option>
+        <option value="Degree Programs">Degree Programs</option>
+        <option value="IT / Computer Center">IT / Computer Center</option>
+      </select>
+    </div>
+    <input type="hidden" name="message" value="Homepage Quick Enquiry">
+    
+    <button type="submit" class="form-submit" id="homeSubmitBtn">
+      <i class="fas fa-paper-plane"></i>&nbsp; <span>Submit Application</span>
+    </button>
+  </form>
+</div>
     </div>
   </div>
 </section>
@@ -746,5 +778,51 @@ document.querySelectorAll('.stats-ribbon').forEach(el => obs.observe(el));
 setPathwayStackIndexes();
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+async function submitEnquiry(event) {
+    event.preventDefault();
+    const form = event.target;
+    const btn = form.querySelector('.form-submit');
+    const btnText = btn.querySelector('span');
+    
+    btn.disabled = true;
+    const originalText = btnText.innerText;
+    btnText.innerText = 'Sending...';
 
+    const formData = new FormData(form);
+
+    try {
+        // Since home page is usually in the root, path is direct
+        const response = await fetch('../save-enquiry.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success === true) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Your application has been submitted.',
+                confirmButtonColor: '#F59E0B'
+            });
+            form.reset();
+        } else {
+            throw new Error();
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Could not submit. Please check your connection.',
+            confirmButtonColor: '#d33'
+        });
+    } finally {
+        btn.disabled = false;
+        btnText.innerText = originalText;
+    }
+}
+</script>
 <?php include_once '../includes/footer.php'; ?>

@@ -952,7 +952,7 @@ include_once '../includes/header.php';
         </p>
         
         <div class="cta-buttons">
-            <a href="contact.php" class="btn-gold">
+            <a href="#" onclick="openApplyModal(); return false;" class="btn-gold">
                 <i class="fas fa-file-alt"></i>
                 <span>Apply Now</span>
             </a>
