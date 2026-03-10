@@ -1,4 +1,9 @@
-﻿<?php include '../../includes/header.php'; ?>
+<?php
+$seoTitle = 'Computer Courses for College Students in Vaniyambadi, Ambur and Tirupathur | SRM Computer Center';
+$seoDescription = 'SRM Computer Center offers practical, job-oriented computer courses for college students in Vaniyambadi, Ambur, and Tirupathur with local placement support and globally relevant digital skills.';
+$seoKeywords = 'computer courses for college students, computer center vaniyambadi, computer institute ambur, computer classes tirupathur, job oriented computer training, pgdca course, dca course, tally gst course, hardware networking course, digital skills training';
+include '../../includes/header.php';
+?>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Nunito:wght@400;500;600;700&display=swap');
@@ -298,7 +303,16 @@
   font-size:36px;
   font-weight:700;
   color:var(--red);
-  margin-bottom:70px;
+  margin-bottom:14px;
+}
+
+.section-intro{
+  max-width:960px;
+  margin:0 auto 50px;
+  text-align:center;
+  font-size:15px;
+  line-height:1.7;
+  color:#4b5563;
 }
 
 /* GRID */
@@ -421,22 +435,22 @@
 
     <div class="hero-left">
 
-      <div class="hero-label">Professional Computer Training Institute</div>
+      <div class="hero-label">Computer Training for College Students</div>
 
       <h1>
-        Training That Helps <br>
-        <span>You Succeed</span>
+        Computer Courses for College Students <br>
+        <span>From Vaniyambadi to Global Careers</span>
       </h1>
 
       <p>
-        Industry-focused computer courses designed to build real-world
-        skills in Programming, Accounting, Design, and Networking.
+        SRM Computer Center provides practical and career-focused training for students from Vaniyambadi, Ambur, and Tirupathur.
+        Build local employability and globally relevant skills in Programming, Accounting, Design, and Networking.
       </p>
 
       <div class="hero-features">
-        <div>✔ 100% Practical Sessions</div>
-        <div>✔ Experienced Trainers</div>
-        <div>✔ Placement Support</div>
+        <div>&#10003; 100% Practical Sessions</div>
+        <div>&#10003; Experienced Trainers with Industry Exposure</div>
+        <div>&#10003; Placement Support for Local and Global Opportunities</div>
       </div>
 
       <div class="hero-buttons">
@@ -462,7 +476,7 @@
     </div>
 
     <div class="hero-right">
-      <img src="../../assets/icons/girl.png" alt="Student">
+      <img src="../../assets/icons/girl.png" alt="College student learning computer skills at SRM Computer Center">
     </div>
 
     <!-- Decorative Background Shape -->
@@ -475,17 +489,18 @@
 </section>
 
 
-<section class="courses-section">
+<section class="courses-section" id="courses">
   <div class="container">
 
-    <h2 class="section-title">Courses Offered</h2>
+    <h2 class="section-title">Top Computer Courses in Vaniyambadi, Ambur and Tirupathur</h2>
+    <p class="section-intro">These job-oriented courses are designed for college students who want internship-ready digital skills, stronger placement outcomes in local companies, and confidence to work in global digital environments.</p>
 
     <div class="course-grid">
 
   <!-- DCA -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/girl2.png" alt="">
+    <img src="../../assets/icons/girl2.png" alt="DCA computer course for college students in Vaniyambadi">
   </div>
   <div class="course-body">
     <h3>DCA – Diploma in Computer Applications</h3>
@@ -502,7 +517,7 @@
 <!-- DOM -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/star.png" alt="">
+    <img src="../../assets/icons/star.png" alt="Office management and Tally training in Ambur and Tirupathur">
   </div>
   <div class="course-body">
     <h3>DOM – Diploma in Office Management</h3>
@@ -519,7 +534,7 @@
 <!-- PGDCA -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/computer2.png" alt="">
+    <img src="../../assets/icons/computer2.png" alt="PGDCA course with coding and networking skills">
   </div>
   <div class="course-body">
     <h3>PGDCA – Post Graduate Diploma in Computer Applications</h3>
@@ -536,7 +551,7 @@
 <!-- Hardware & Networking -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/girl.png" alt="">
+    <img src="../../assets/icons/girl.png" alt="Hardware and networking practical course">
   </div>
   <div class="course-body">
     <h3>Hardware & Networking</h3>
@@ -553,7 +568,7 @@
 <!-- DCA + Java -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/girl.png" alt="">
+    <img src="../../assets/icons/girl.png" alt="DCA and Java programming course">
   </div>
   <div class="course-body">
     <h3>DCA + Java</h3>
@@ -570,7 +585,7 @@
 <!-- DCA Basic -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/girl.png" alt="">
+    <img src="../../assets/icons/girl.png" alt="Basic DCA course for beginners">
   </div>
   <div class="course-body">
     <h3>DCA Basic</h3>
@@ -587,7 +602,7 @@
 <!-- Tally Prime + GST -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/girl.png" alt="">
+    <img src="../../assets/icons/girl.png" alt="Tally Prime and GST accounting course">
   </div>
   <div class="course-body">
     <h3>Tally Prime + GST</h3>
@@ -604,7 +619,7 @@
 <!-- HDCA -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/girl.png" alt="">
+    <img src="../../assets/icons/girl.png" alt="HDCA advanced computer applications course">
   </div>
   <div class="course-body">
     <h3>HDCA – Higher Diploma in Computer Applications</h3>
@@ -621,7 +636,7 @@
 <!-- ADCA -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/girl.png" alt="">
+    <img src="../../assets/icons/girl.png" alt="ADCA advanced diploma computer course">
   </div>
   <div class="course-body">
     <h3>ADCA – Advanced Diploma in Computer Applications</h3>
@@ -638,7 +653,7 @@
 <!-- DTP Designer -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/girl.png" alt="">
+    <img src="../../assets/icons/girl.png" alt="DTP designer course with CorelDraw and Photoshop">
   </div>
   <div class="course-body">
     <h3>DTP Designer</h3>
@@ -655,7 +670,7 @@
 <!-- Spoken English -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/girl.png" alt="">
+    <img src="../../assets/icons/girl.png" alt="Spoken English communication training for students">
   </div>
   <div class="course-body">
     <h3>Spoken English</h3>
@@ -672,7 +687,7 @@
 <!-- Smart Kids -->
 <div class="course-card">
   <div class="course-image">
-    <img src="../../assets/icons/computer.png" alt="">
+    <img src="../../assets/icons/computer.png" alt="Basic computer course for school and college beginners">
   </div>
   <div class="course-body">
     <h3>Smart Kids</h3>

@@ -1,4 +1,7 @@
 <?php 
+require_once __DIR__ . '/includes/auth.php';
+require_admin_login();
+
 require '../connect.php'; 
 include_once 'includes/header.php'; 
 include_once 'includes/sidebar.php'; 

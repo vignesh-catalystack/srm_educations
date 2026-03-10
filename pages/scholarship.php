@@ -706,6 +706,7 @@ include_once '../includes/header.php';
     }
 </style>
 
+
 <!-- Hero Section -->
 <section class="scholarship-hero">
     <div class="scholarship-particles">
@@ -722,7 +723,7 @@ include_once '../includes/header.php';
     <div class="hero-content">
         <div class="scholarship-badge">
             <i class="fas fa-award"></i>
-            <span>Limited Time Offer</span>
+            <span>75% Scholarship for All Computer Courses</span>
         </div>
         
         <h1 class="hero-title">
@@ -737,11 +738,11 @@ include_once '../includes/header.php';
         </div>
         
         <p class="hero-subtitle">
-            கம்ப்யூட்டர் படிப்புகள்... உலகை வெல்லுங்கள்...<br>
-            Make your dreams affordable with SRM Computer Center's generous scholarship program
+            கம்ப்யூட்டர் படிப்புகள் அனைத்திற்கும் 75% வரை Scholarship!<br>
+            Scholarship available for ALL Computer Courses at SRM Computer Center.
         </p>
         
-        <a href="#apply" class="cta-primary">
+        <a href="#" onclick="openApplyModal(); return false;" class="cta-primary">
             <i class="fas fa-graduation-cap"></i>
             <span>Apply for Scholarship</span>
         </a>
@@ -753,70 +754,73 @@ include_once '../includes/header.php';
     <div class="content-container">
         <div class="section-header">
             <span class="section-badge">Scholarship Program</span>
-            <h2 class="section-title">Who Can Apply?</h2>
+            <h2 class="section-title">Scholarship for All Computer Courses</h2>
             <p class="section-subtitle">
-                We believe quality education should be accessible to everyone. Check if you're eligible for our scholarship programs.
+                We are offering up to 75% scholarship for every Computer Course. No category restrictions. Open for all eligible students.
             </p>
         </div>
         
         <div class="eligibility-grid">
             <div class="eligibility-card">
                 <div class="card-icon">
-                    <i class="fas fa-user-graduate"></i>
+                    <i class="fas fa-laptop-code"></i>
                 </div>
-                <h3 class="card-title">Merit-Based Scholarship</h3>
+                <h3 class="card-title">All Computer Courses Eligible</h3>
                 <p class="card-description">
-                    Awarded to students who demonstrate exceptional academic performance
+                    75% scholarship applicable for all computer-related programs.
                 </p>
                 <ul class="card-list">
-                    <li><i class="fas fa-check-circle"></i> 10th/12th marks above 80%</li>
-                    <li><i class="fas fa-check-circle"></i> UG/PG students with 75%+ CGPA</li>
-                    <li><i class="fas fa-check-circle"></i> Up to 50% fee waiver</li>
+                    <li><i class="fas fa-check-circle"></i> Programming Courses</li>
+                    <li><i class="fas fa-check-circle"></i> Software & App Development</li>
+                    <li><i class="fas fa-check-circle"></i> Tally & Accounting Software</li>
+                    <li><i class="fas fa-check-circle"></i> Hardware & Networking</li>
+                    <li><i class="fas fa-check-circle"></i> All Diploma & Certification Courses</li>
                 </ul>
             </div>
 
             <div class="eligibility-card">
                 <div class="card-icon">
-                    <i class="fas fa-seedling"></i>
+                    <i class="fas fa-users"></i>
                 </div>
-                <h3 class="card-title">Agricultural Background</h3>
+                <h3 class="card-title">Open for Students & Professionals</h3>
                 <p class="card-description">
-                    Special concessions for students from farming families
+                    Anyone interested in computer education can apply for the scholarship.
                 </p>
                 <ul class="card-list">
-                    <li><i class="fas fa-check-circle"></i> Farmer family certificate required</li>
-                    <li><i class="fas fa-check-circle"></i> Valid land ownership proof</li>
-                    <li><i class="fas fa-check-circle"></i> Up to 75% fee concession</li>
+                    <li><i class="fas fa-check-circle"></i> School Students</li>
+                    <li><i class="fas fa-check-circle"></i> College Students</li>
+                    <li><i class="fas fa-check-circle"></i> Job Seekers</li>
+                    <li><i class="fas fa-check-circle"></i> Working Professionals</li>
                 </ul>
             </div>
 
             <div class="eligibility-card">
                 <div class="card-icon">
-                    <i class="fas fa-hands-helping"></i>
+                    <i class="fas fa-percentage"></i>
                 </div>
-                <h3 class="card-title">Labor Family Support</h3>
+                <h3 class="card-title">Flat 75% Scholarship</h3>
                 <p class="card-description">
-                    Empowering children of daily wage workers and laborers
+                    Direct fee concession up to 75% on total course fees.
                 </p>
                 <ul class="card-list">
-                    <li><i class="fas fa-check-circle"></i> Labor card verification</li>
-                    <li><i class="fas fa-check-circle"></i> Income certificate (below ₹2L/year)</li>
-                    <li><i class="fas fa-check-circle"></i> Up to 75% scholarship</li>
+                    <li><i class="fas fa-check-circle"></i> Transparent fee structure</li>
+                    <li><i class="fas fa-check-circle"></i> Limited seats available</li>
+                    <li><i class="fas fa-check-circle"></i> First come, first served basis</li>
                 </ul>
             </div>
 
             <div class="eligibility-card">
                 <div class="card-icon">
-                    <i class="fas fa-graduation-cap"></i>
+                    <i class="fas fa-award"></i>
                 </div>
-                <h3 class="card-title">SCATe Scholarship</h3>
+                <h3 class="card-title">Special 2026 Offer</h3>
                 <p class="card-description">
-                    Special scholarship program for computer training excellence
+                    Exclusive scholarship campaign for 2026 admissions.
                 </p>
                 <ul class="card-list">
-                    <li><i class="fas fa-check-circle"></i> All course enrollments eligible</li>
-                    <li><i class="fas fa-check-circle"></i> Performance-based rewards</li>
-                    <li><i class="fas fa-check-circle"></i> 75% scholarship opportunity</li>
+                    <li><i class="fas fa-check-circle"></i> Applicable for new admissions only</li>
+                    <li><i class="fas fa-check-circle"></i> Valid for all computer programs</li>
+                    <li><i class="fas fa-check-circle"></i> Limited period offer</li>
                 </ul>
             </div>
         </div>
@@ -830,7 +834,7 @@ include_once '../includes/header.php';
             <span class="section-badge">Program Benefits</span>
             <h2 class="section-title">What You'll Get</h2>
             <p class="section-subtitle">
-                Beyond fee reduction, scholarship students enjoy exclusive benefits
+                Along with 75% scholarship, students receive premium training benefits.
             </p>
         </div>
         
@@ -840,102 +844,31 @@ include_once '../includes/header.php';
                     <i class="fas fa-project-diagram"></i>
                 </div>
                 <h4 class="benefit-title">100% Project Based Training</h4>
-                <p class="benefit-text">Learn by doing with real-world projects and hands-on practice</p>
+                <p class="benefit-text">Hands-on real-time practical training.</p>
             </div>
 
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-chalkboard-teacher"></i>
                 </div>
-                <h4 class="benefit-title">Well Qualified Faculties</h4>
-                <p class="benefit-text">Learn from industry experts with years of practical experience</p>
-            </div>
-
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h4 class="benefit-title">For Professionals & Students</h4>
-                <p class="benefit-text">Flexible batches suitable for working professionals and students</p>
+                <h4 class="benefit-title">Expert Trainers</h4>
+                <p class="benefit-text">Learn from experienced industry professionals.</p>
             </div>
 
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-handshake"></i>
                 </div>
-                <h4 class="benefit-title">Complete Placement Assistance</h4>
-                <p class="benefit-text">100% job placement support with top companies</p>
-            </div>
-
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <h4 class="benefit-title">State-of-the-Art Lab</h4>
-                <p class="benefit-text">Access to modern computer labs with latest software and tools</p>
+                <h4 class="benefit-title">Placement Assistance</h4>
+                <p class="benefit-text">Complete job support after course completion.</p>
             </div>
 
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-certificate"></i>
                 </div>
-                <h4 class="benefit-title">Industry Certifications</h4>
-                <p class="benefit-text">Get recognized certificates valued by employers worldwide</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- How to Apply Section -->
-<section id="apply" class="apply-section">
-    <div class="content-container">
-        <div class="section-header">
-            <span class="section-badge">Application Process</span>
-            <h2 class="section-title">How to Apply</h2>
-            <p class="section-subtitle">
-                Simple 4-step process to claim your scholarship
-            </p>
-        </div>
-        
-        <div class="steps-container">
-            <div class="step-item">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3 class="step-title">Submit Application</h3>
-                    <p class="step-description">
-                        Fill out the online scholarship application form or visit our campus. Provide your academic records and personal details.
-                    </p>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3 class="step-title">Document Verification</h3>
-                    <p class="step-description">
-                        Submit required documents: Educational certificates, income proof, farmer/labor card (if applicable), and identity proof.
-                    </p>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3 class="step-title">Counseling Session</h3>
-                    <p class="step-description">
-                        Meet with our academic counselors who will guide you on course selection and explain scholarship terms in detail.
-                    </p>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3 class="step-title">Enrollment & Start Learning</h3>
-                    <p class="step-description">
-                        Complete the enrollment process with your scholarship discount applied. Begin your journey towards a successful tech career!
-                    </p>
-                </div>
+                <h4 class="benefit-title">Recognized Certification</h4>
+                <p class="benefit-text">Valuable certificates for career growth.</p>
             </div>
         </div>
     </div>
@@ -945,10 +878,10 @@ include_once '../includes/header.php';
 <section class="cta-section">
     <div class="cta-content">
         <h2 class="cta-title">
-            Don't Miss This <span class="highlight">Golden Opportunity!</span>
+            75% Scholarship on <span class="highlight">All Computer Courses</span>
         </h2>
         <p class="cta-text">
-            Limited scholarships available. Apply now and secure your future in the tech industry with up to 75% fee concession.
+            Limited seats available. Apply now and secure up to 75% fee concession on every computer course.
         </p>
         
         <div class="cta-buttons">
@@ -965,5 +898,5 @@ include_once '../includes/header.php';
 </section>
 
 <?php 
-
+// Scholarship updated: 75% applicable for ALL Computer Courses (2026 Campaign)
 ?>

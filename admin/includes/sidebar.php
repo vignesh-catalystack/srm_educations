@@ -47,7 +47,7 @@
                 </a>
                 <a href="logout.php" class="nav-item group text-red-500 hover:bg-red-50">
                     <i class="fa-solid fa-gear w-6 text-center"></i>
-                    <span>Logout.app</span>
+                    <span>Logout</span>
                 </a>
             </nav>
         </div>

@@ -43,6 +43,56 @@
     </div>
 </footer>
 
+<style>
+    .floating-whatsapp {
+        position: fixed;
+        left: 16px;
+        bottom: 16px;
+        width: 48px;
+        height: 48px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background: linear-gradient(145deg, #25D366, #1fa855);
+        color: #ffffff;
+        box-shadow: 0 10px 24px rgba(37, 211, 102, 0.35);
+        z-index: 65;
+        transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+        animation: whatsappFloatPulse 2.2s ease-in-out infinite;
+    }
+
+    .floating-whatsapp i {
+        font-size: 1.55rem;
+        line-height: 1;
+    }
+
+    .floating-whatsapp:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 14px 28px rgba(37, 211, 102, 0.42);
+        filter: brightness(1.03);
+    }
+
+    @keyframes whatsappFloatPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.06); }
+    }
+
+    @media (max-width: 768px) {
+        .floating-whatsapp {
+            width: 48px;
+            height: 48px;
+            left: 12px;
+            bottom: 12px;
+        }
+    }
+</style>
+
+<a class="floating-whatsapp" href="https://wa.me/917373733763" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
+
 <button id="backToTopBtn" type="button" aria-label="Back to top" style="position:fixed;right:16px;bottom:16px;width:44px;height:44px;border:none;border-radius:999px;background:var(--red, #D32F2F);color:#F8FAFC;box-shadow:0 10px 22px rgba(var(--red-rgb, 211,47,47),.35);cursor:pointer;display:none;z-index:60;">
     <i class="fas fa-arrow-up"></i>
 </button>

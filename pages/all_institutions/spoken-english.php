@@ -1,4 +1,8 @@
 <?php
+$seoTitle = 'Spoken English Course in Ambur & Vaniyambadi | SRM Spoken English Institute';
+$seoDescription = 'Join SRM Spoken English Institute for beginner to advanced fluency training with live speaking practice, accent support, and interview preparation.';
+$seoKeywords = 'spoken english institute in ambur, spoken english institute in vaniyambadi, spoken english course, english speaking classes, communication skills training, accent training, interview english coaching, beginner english course, advanced fluency course';
+$seoImage = '/assets/images/teacher.png';
 include '../../includes/header.php';
 
 // ── HERO DATA ──────────────────────────────────────────
@@ -8,9 +12,9 @@ $title_highlight = "Spoken";
 $title_line2     = "English Fluently";
 $description     = "An immersive spoken English program designed to build real fluency through live practice, accent training, and interactive conversation sessions with expert coaches.";
 $btn_primary     = "Get Started";
-$btn_primary_url = "#get-started";
+$btn_primary_url = "../course.php";
 $btn_outline     = "Learn More";
-$btn_outline_url = "#learn-more";
+$btn_outline_url = "../contact.php";
 $stats = [
     ["num" => "+630", "label" => "Best Online Course"],
     ["num" => "+75",  "label" => "Expert Teachers"],
@@ -816,7 +820,8 @@ $cta_person_image  = "../../assets/images/teacher-img-1.png";
 <!-- ═══════════════════════════════════════════════
      HERO SECTION
 ═══════════════════════════════════════════════ -->
-<section class="hero-section">
+<main id="main-content">
+<section class="hero-section" aria-label="Spoken English hero section">
   <div class="hero-inner">
     <div class="hero-left">
       <div class="wave-decor">
@@ -832,8 +837,8 @@ $cta_person_image  = "../../assets/images/teacher-img-1.png";
       </h1>
       <p class="hero-desc"><?php echo htmlspecialchars($description); ?></p>
       <div class="hero-btns">
-        <a href="<?php echo htmlspecialchars($btn_primary_url); ?>" class="btn-primary"><?php echo htmlspecialchars($btn_primary); ?></a>
-        <a href="<?php echo htmlspecialchars($btn_outline_url); ?>"  class="btn-outline"><?php echo htmlspecialchars($btn_outline); ?></a>
+        <a href="<?php echo htmlspecialchars($btn_primary_url); ?>" class="btn-primary" title="View all SRM courses"><?php echo htmlspecialchars($btn_primary); ?></a>
+        <a href="<?php echo htmlspecialchars($btn_outline_url); ?>"  class="btn-outline" title="Contact SRM Spoken English Institute"><?php echo htmlspecialchars($btn_outline); ?></a>
       </div>
       <div class="hero-stats">
         <?php foreach ($stats as $s): ?>
@@ -849,7 +854,7 @@ $cta_person_image  = "../../assets/images/teacher-img-1.png";
       <div class="image-wrapper">
         <div class="blob-bg"></div>
         <?php if (!empty($person_image)): ?>
-          <img class="person-img" src="<?php echo htmlspecialchars($person_image); ?>" alt="Spoken English Teacher">
+          <img class="person-img" src="<?php echo htmlspecialchars($person_image); ?>" alt="SRM spoken English trainer conducting communication class" width="330" height="410" loading="eager" fetchpriority="high" decoding="async">
         <?php else: ?>
           <div class="person-placeholder"></div>
         <?php endif; ?>
@@ -873,7 +878,7 @@ $cta_person_image  = "../../assets/images/teacher-img-1.png";
 <!-- ═══════════════════════════════════════════════
      OUR PROVIDED COURSES
 ═══════════════════════════════════════════════ -->
-<section class="sc-courses-section" id="courses">
+<section class="sc-courses-section" id="courses" aria-label="Spoken English course levels">
   <div class="sc-courses-inner">
 
     <div class="sc-header">
@@ -948,7 +953,7 @@ $cta_person_image  = "../../assets/images/teacher-img-1.png";
 <!-- ═══════════════════════════════════════════════
      OUR PROVIDED SERVICES
 ═══════════════════════════════════════════════ -->
-<section class="se-services-section">
+<section class="se-services-section" aria-label="Spoken English services">
   <div class="se-services-inner">
     <div class="se-section-badge"><?php echo htmlspecialchars($services_badge); ?></div>
     <h2 class="se-section-title"><?php echo htmlspecialchars($services_title); ?></h2>
@@ -973,11 +978,11 @@ $cta_person_image  = "../../assets/images/teacher-img-1.png";
 <!-- ═══════════════════════════════════════════════
      CTA SECTION
 ═══════════════════════════════════════════════ -->
-<section class="se-cta-section">
+<section class="se-cta-section" aria-label="Spoken English enrollment call to action">
   <div class="se-cta-inner">
     <div class="se-cta-image-wrap">
       <?php if (!empty($cta_person_image)): ?>
-        <img class="se-cta-person" src="<?php echo htmlspecialchars($cta_person_image); ?>" alt="English Teacher">
+        <img class="se-cta-person" src="<?php echo htmlspecialchars($cta_person_image); ?>" alt="English trainer for fluency and interview communication coaching" width="280" height="340" loading="lazy" decoding="async">
       <?php else: ?>
         <div class="se-cta-person-placeholder"></div>
       <?php endif; ?>
@@ -1063,5 +1068,32 @@ $cta_person_image  = "../../assets/images/teacher-img-1.png";
   cards.forEach(c => io.observe(c));
 })();
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "SRM Spoken English Institute",
+      "description": "Spoken English training institute offering beginner to advanced fluency, communication, and interview preparation.",
+      "url": "/pages/all_institutions/spoken-english.php",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "SRM Education"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Spoken English Courses",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Foundation English" },
+        { "@type": "ListItem", "position": 2, "name": "Conversational English" },
+        { "@type": "ListItem", "position": 3, "name": "Advanced Fluency" }
+      ]
+    }
+  ]
+}
+</script>
+</main>
 
 <?php include '../../includes/footer.php'; ?>

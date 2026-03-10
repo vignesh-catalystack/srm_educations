@@ -1,4 +1,7 @@
 <?php 
+require_once __DIR__ . '/includes/auth.php';
+require_admin_login();
+
 // Include config first to establish database connection
 include_once 'includes/config.php'; 
 include_once 'includes/header.php'; 

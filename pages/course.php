@@ -539,6 +539,84 @@ include_once '../includes/header.php';
             grid-template-columns: 1fr;
         }
 
+        .explorer-bar {
+            background: #f1f3f6;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.9rem;
+            padding: 0.75rem;
+            min-height: auto;
+            position: relative;
+            overflow: visible;
+        }
+
+        .course-search {
+            display: none;
+        }
+
+        .result-count {
+            font-size: 0.74rem;
+            font-weight: 700;
+            margin-top: 0;
+        }
+
+        .filter-buttons {
+            position: fixed;
+            left: 0.4rem;
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            width: 5.8rem;
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0.5rem 0.42rem;
+            background: #ffffff;
+            border: 1px solid #dbe4ef;
+            border-radius: 0.8rem;
+            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.14);
+            z-index: 1200;
+            max-height: calc(100vh - 7.2rem);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        body.show-mobile-course-filter .filter-buttons {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+            pointer-events: auto;
+        }
+
+        .filter-btn {
+            width: 100%;
+            text-align: left;
+            background: #ffffff;
+            border: 1.2px solid #163a67;
+            padding: 0.34rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.56rem;
+            letter-spacing: 0;
+            text-transform: none;
+            color: #163a67;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .filter-btn:hover {
+            border-color: #163a67;
+            color: #163a67;
+        }
+
+        .filter-btn.active {
+            background: #163a67;
+            border-color: #163a67;
+            color: #F8FAFC;
+            font-weight: 600;
+        }
+
         .section-wrapper {
             padding: 0;
             margin-bottom: 2rem;
@@ -613,7 +691,7 @@ include_once '../includes/header.php';
 <section class="course-hero">
     <div class="hero-content">
         <p class="hero-badge">SRM Courses</p>
-        <h1 class="hero-title">Paramedical & Computer Center Programs</h1>
+        <h1 class="hero-title">Paramedical, Computer & <br>BSC Courses</h1>
         <p class="hero-subtitle">
             Explore our complete list of career-focused courses with duration details for both day and fast-track batches.
         </p>
@@ -643,7 +721,9 @@ include_once '../includes/header.php';
         <div class="filter-buttons">
             <button class="filter-btn active" data-filter="all">All Courses</button>
             <button class="filter-btn" data-filter="paramedical">Paramedical</button>
-            <button class="filter-btn" data-filter="computer">Computer Center</button>
+            <button class="filter-btn" data-filter="computer">Computer Courses</button>
+            <button class="filter-btn" data-filter="bsc">BSC Courses</button>
+            <button class="filter-btn" data-filter="diploma">Diploma Courses</button>
         </div>
     </section>
 
@@ -901,6 +981,142 @@ include_once '../includes/header.php';
         </div>
     </section>
 
+    <!-- BSC Courses Section -->
+    <section class="section-wrapper course-section reveal" data-category="bsc">
+        <div class="section-header">
+            <div class="section-header-left">
+                <p class="section-meta green">SRM Degree Programs</p>
+                <h2 class="section-title">3 Years BSC Courses</h2>
+            </div>
+        </div>
+
+        <div class="course-grid">
+            <article class="course-card reveal">
+                <h3 class="course-card-title">BSC - Multipurpose Health Worker</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 12th Science (PCB)</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">BSC - Medical Lab Technology</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 12th Science (PCB)</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">BSC - Optometry</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 12th Science (PCB)</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">B.Voc (Bachelor of Vocation) - Anaesthesia Technician</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 12th</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">B.Voc - Medical Laboratory Technician</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 12th</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">BSC Honours - Hotel Management</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 12th</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">B.Pharmacy</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 12th with PCM/PCB</li>
+                </ul>
+                <span class="duration-pill">Duration: 4 Years</span>
+            </article>
+        </div>
+    </section>
+
+    <!-- Diploma Courses Section -->
+    <section class="section-wrapper course-section reveal" data-category="diploma">
+        <div class="section-header">
+            <div class="section-header-left">
+                <p class="section-meta blue">SRM Diploma Programs</p>
+                <h2 class="section-title">3 Years Diploma Courses</h2>
+            </div>
+        </div>
+
+        <div class="course-grid">
+            <article class="course-card reveal">
+                <h3 class="course-card-title">Diploma in Vocation</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 10th Pass</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">Diploma in Anaesthesia Technician</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 10th Pass</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">Diploma in Medical Laboratory Technician</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 10th Pass</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">Diploma in Operation Theatre Technician</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 10th Pass</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">Diploma in Dialysis Technician</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 10th Pass</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">Diploma in Dental Technician</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 10th Pass</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+
+            <article class="course-card reveal">
+                <h3 class="course-card-title">Diploma in Radiology Technician</h3>
+                <ul class="course-list">
+                    <li>Eligibility: 10th Pass</li>
+                </ul>
+                <span class="duration-pill">Duration: 3 Years</span>
+            </article>
+        </div>
+    </section>
+
     <section class="section-wrapper faq-section reveal">
         <div class="section-header">
             <div class="section-header-left">
@@ -964,6 +1180,7 @@ include_once '../includes/header.php';
     const sections = document.querySelectorAll('.course-section');
     const cards = document.querySelectorAll('.course-section .course-card');
     const resultCount = document.getElementById('resultCount');
+    const mainContainer = document.querySelector('.main-container');
     let activeFilter = 'all';
 
     // Add small course thumbnail on top of each card
@@ -1045,6 +1262,16 @@ include_once '../includes/header.php';
     searchInput.addEventListener('input', applyCourseFilters);
     resultCount.textContent = cards.length;
 
+    // Mobile only: show floating filter only while the course section is on screen.
+    if (window.matchMedia('(max-width: 768px)').matches && mainContainer) {
+        const mobileFilterObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                document.body.classList.toggle('show-mobile-course-filter', entry.isIntersecting);
+            });
+        }, { threshold: 0.01 });
+        mobileFilterObserver.observe(mainContainer);
+    }
+
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -1069,5 +1296,3 @@ include_once '../includes/header.php';
 <?php
 include_once '../includes/footer.php';
 ?>
-
-

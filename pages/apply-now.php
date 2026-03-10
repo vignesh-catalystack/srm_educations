@@ -44,7 +44,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SRM Application</title>
+<title>Apply Online | SRM Education Admissions</title>
+<meta name="description" content="Submit your SRM Education admission application online for paramedical, computer, and language programs.">
+<meta name="robots" content="index, follow">
+<?php
+$applyScheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$applyHost = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$applyPath = parse_url($_SERVER['REQUEST_URI'] ?? '/pages/apply-now.php', PHP_URL_PATH);
+$applyCanonical = $applyScheme . '://' . $applyHost . $applyPath;
+?>
+<link rel="canonical" href="<?php echo htmlspecialchars($applyCanonical); ?>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Apply Online | SRM Education Admissions">
+<meta property="og:description" content="Submit your SRM Education admission application online for career-focused courses.">
+<meta property="og:url" content="<?php echo htmlspecialchars($applyCanonical); ?>">
+<meta property="og:image" content="<?php echo htmlspecialchars($applyScheme . '://' . $applyHost . '/assets/images/srm-main-logo.png'); ?>">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apply Online | SRM Education Admissions">
+<meta name="twitter:description" content="Submit your SRM Education admission application online for career-focused courses.">
+<meta name="twitter:image" content="<?php echo htmlspecialchars($applyScheme . '://' . $applyHost . '/assets/images/srm-main-logo.png'); ?>">
 
 <style>
 :root{

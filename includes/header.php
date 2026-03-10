@@ -1,9 +1,105 @@
+<?php
+$seoHost = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$seoScheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$seoBaseUrl = $seoScheme . '://' . $seoHost;
+$seoCurrentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$seoCanonical = $seoBaseUrl . $seoCurrentPath;
+$seoCurrentPage = basename($_SERVER['PHP_SELF'] ?? 'index.php');
+
+$seoDefaults = [
+    'title' => 'SRM Education | Paramedical, Computer & Spoken English Courses',
+    'description' => 'SRM Education offers career-focused programs in Paramedical, Computer Center, and Spoken English with practical training and placement support.',
+    'keywords' => 'SRM Education, paramedical courses, computer courses, spoken english classes, diploma courses, admissions',
+];
+
+$seoPageMeta = [
+    'index.php' => [
+        'title' => 'SRM Education | Career-Focused Paramedical, Computer & English Programs',
+        'description' => 'Explore SRM Education programs, admissions, scholarships, and career-ready training in Paramedical, Computer Center, and Spoken English courses.'
+    ],
+    'course.php' => [
+        'title' => 'Courses | SRM Education',
+        'description' => 'Browse SRM Education courses across healthcare, computer, and language domains with practical training and industry-relevant curriculum.'
+    ],
+    'institution.php' => [
+        'title' => 'Institutions | SRM Education',
+        'description' => 'Discover SRM Education institutions and departments offering specialized education with modern facilities and expert faculty.'
+    ],
+    'paramedical.php' => [
+        'title' => 'Paramedical Institute | SRM Education',
+        'description' => 'Join SRM Paramedical programs designed for real clinical exposure, practical healthcare training, and strong career outcomes.',
+        'keywords' => 'paramedical courses, allied health science, nursing assistant course, pharmacy diploma, x ray technology course, ct scan technician course, operation theater technology, ambur paramedical institute, vaniyambadi paramedical college'
+    ],
+    'computer-center.php' => [
+        'title' => 'Computer Center | SRM Education',
+        'description' => 'Build in-demand digital skills at SRM Computer Center through practical, job-oriented computer and IT programs.'
+    ],
+    'spoken-english.php' => [
+        'title' => 'Spoken English Institute | SRM Education',
+        'description' => 'Improve communication confidence with SRM Spoken English training focused on fluency, pronunciation, and practical speaking.'
+    ],
+    'scholarship.php' => [
+        'title' => 'Scholarships | SRM Education',
+        'description' => 'Check scholarship opportunities at SRM Education and apply for merit and need-based financial support options.'
+    ],
+    'gallery.php' => [
+        'title' => 'Gallery | SRM Education',
+        'description' => 'View campus life, training facilities, events, and student activities in the official SRM Education gallery.'
+    ],
+    'contact.php' => [
+        'title' => 'Contact SRM Education | Admissions & Support',
+        'description' => 'Contact SRM Education for admissions, course counseling, and institutional support through phone, email, or visit.'
+    ],
+    'student-corner.php' => [
+        'title' => 'Student Corner | SRM Education',
+        'description' => 'Access SRM Education student resources, notices, and support tools in the Student Corner.'
+    ],
+    'download-application.php' => [
+        'title' => 'Download Application Form | SRM Education',
+        'description' => 'Download the latest SRM Education application form and begin your admission process quickly.'
+    ],
+];
+
+$seoComputed = $seoPageMeta[$seoCurrentPage] ?? $seoDefaults;
+$seoTitle = isset($seoTitle) ? $seoTitle : $seoComputed['title'];
+$seoDescription = isset($seoDescription) ? $seoDescription : $seoComputed['description'];
+$seoImage = isset($seoImage) ? $seoImage : ($seoBaseUrl . '/assets/images/srm-main-logo.png');
+$seoKeywords = isset($seoKeywords) ? $seoKeywords : ($seoComputed['keywords'] ?? $seoDefaults['keywords']);
+
+$seoWebPageSchema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'WebPage',
+    'name' => $seoTitle,
+    'description' => $seoDescription,
+    'url' => $seoCanonical,
+    'isPartOf' => [
+        '@type' => 'WebSite',
+        'name' => 'SRM Education',
+        'url' => $seoBaseUrl
+    ]
+];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRM Education | Paramedical & IT Education</title>
+    <title><?php echo htmlspecialchars($seoTitle); ?></title>
+    <meta name="description" content="<?php echo htmlspecialchars($seoDescription); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($seoKeywords); ?>">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="<?php echo htmlspecialchars($seoCanonical); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SRM Education">
+    <meta property="og:title" content="<?php echo htmlspecialchars($seoTitle); ?>">
+    <meta property="og:description" content="<?php echo htmlspecialchars($seoDescription); ?>">
+    <meta property="og:url" content="<?php echo htmlspecialchars($seoCanonical); ?>">
+    <meta property="og:image" content="<?php echo htmlspecialchars($seoImage); ?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo htmlspecialchars($seoTitle); ?>">
+    <meta name="twitter:description" content="<?php echo htmlspecialchars($seoDescription); ?>">
+    <meta name="twitter:image" content="<?php echo htmlspecialchars($seoImage); ?>">
+    <script type="application/ld+json"><?php echo json_encode($seoWebPageSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,27 +202,41 @@
             box-shadow: 0 4px 14px rgba(211,47,47,0.35);
         }
         .logo-badge.logo-image-only {
-            width: 188px; height: 230px;
-            background: transparent; box-shadow: none;
-            border-radius: 0; color: transparent;
-            font-size: 0; letter-spacing: 0; overflow: hidden;
+            width: 168px;
+            height: 58px;
+            background: transparent;
+            background-image: none !important;
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: contain;
+            box-shadow: none;
+            border-radius: 0;
+            color: transparent;
+            font-size: 0;
+            letter-spacing: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
         }
         .logo-badge.logo-image-only img {
-            width: 100%; height: 25%;
-            object-fit: contain; border-radius: 0; display: block;
-            transform: translateY(2px) scale(1.18); transform-origin: center;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: left center;
+            border-radius: 0;
+            display: block;
+            transform: none;
         }
-        .logo-badge.logo-main { width: 160px; height: 50px; }
-        .logo-badge.logo-main img {
-            width: auto; height: 170%; max-height: 100px;
-            object-fit: contain; transform: none; border-radius: 0; display: block;
-        }
-        .logo-badge.logo-computer-center img {
-            transform: translateY(2px) scale(1.18); object-position: center; height: 20%;
-        }
-        .logo-badge.logo-spoken-english img {
-            transform: translateY(5px) scale(1.1); object-position: center; height: 45%;
-        }
+        .logo-badge.logo-image-only img + img { display: none !important; }
+        .logo-badge.logo-main { width: 168px; height: 58px; }
+        .logo-badge.logo-main img { object-position: right; }
+        .logo-badge.logo-paramedical { width: 220px; height: 56px; }
+        .logo-badge.logo-paramedical img { object-position: right; }
+        .logo-badge.logo-computer-center { width: 170px; height: 52px; }
+        .logo-badge.logo-computer-center img { object-position: right; }
+        .logo-badge.logo-spoken-english { width: 178px; height: 52px; }
+        .logo-badge.logo-spoken-english img { object-position: right; }
         .logo-text-wrap strong {
             display: block; font-family: var(--font-head);
             font-size: 24px; font-weight: 700; color: var(--navy);
@@ -187,13 +297,25 @@
         }
         .nav-dropdown-link i { font-size: 11px; opacity: 0.65; }
         .nav-cta {
-            background: var(--red) !important; color: #F8FAFC !important;
-            border-radius: 6px !important; padding: 9px 20px !important;
-            box-shadow: 0 4px 14px rgba(211,47,47,0.3);
-            font-family: var(--font-head); white-space: nowrap;
-            line-height: 1; cursor: pointer; border: none;
+            background: linear-gradient(135deg, var(--red), var(--red2)) !important;
+            color: #F8FAFC !important;
+            border-radius: 999px !important;
+            padding: 10px 22px !important;
+            box-shadow: 0 8px 20px rgba(211,47,47,0.28);
+            font-family: var(--font-head);
+            white-space: nowrap;
+            line-height: 1;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.05em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
         }
-        .nav-cta:hover { background: var(--red2) !important; }
+        .nav-cta:hover {
+            background: linear-gradient(135deg, var(--red2), var(--red)) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 12px 26px rgba(211,47,47,0.32);
+            filter: saturate(1.08);
+        }
         .nav-student-corner {
             background: #F59E0B !important; color: #1E293B !important;
             border-radius: 6px !important; padding: 9px 20px !important;
@@ -238,13 +360,36 @@
             font-size: 13px; font-weight: 700; color: var(--navy);
             text-transform: uppercase; letter-spacing: 0.04em;
             border: 0; background: transparent; font-family: var(--font-head);
+            
         }
         .mobile-dropdown-trigger i { transition: transform 0.2s ease; font-size: 12px; }
         .mobile-dropdown.open .mobile-dropdown-trigger i { transform: rotate(180deg); }
         .mobile-dropdown-menu { display: none; padding: 0 0 8px 14px; }
         .mobile-dropdown.open .mobile-dropdown-menu { display: block; }
         .mobile-dropdown-menu a { font-size: 12px; padding: 9px 6px; border-bottom: 0; color: #334155; }
-
+        .mobile-menu a.mobile-apply-cta {
+            margin-top: 12px;
+            padding: 11px 14px;
+            border-radius: 10px;
+            border-bottom: 0;
+            color: #F8FAFC;
+            background: linear-gradient(135deg, var(--red) 0%, var(--red2) 100%);
+            text-align: center;
+            font-family: var(--font-head);
+            font-size: 14px;
+            letter-spacing: 0.06em;
+            box-shadow: 0 10px 20px rgba(211,47,47,0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+        .mobile-menu a.mobile-apply-cta:hover {
+            filter: brightness(1.04);
+            transform: translateY(-1px);
+        }
+        
         /* ============================================================
            RESPONSIVE — unchanged
            ============================================================ */
@@ -257,11 +402,63 @@
             .nav-links, .header-phone { display: none; }
             .mobile-menu-btn { display: inline-flex; align-items: center; justify-content: center; }
             .mobile-menu.show { display: block; }
-            .header-wrap { padding: 0 16px; }
+            .header-wrap {
+                padding: 0 12px;
+                height: 64px;
+                gap: 10px;
+            }
+            .logo-link { flex: 1; min-width: 0; }
+            .logo-badge.logo-main { width: clamp(118px, 46vw, 154px); height: 40px; }
+            .logo-badge.logo-paramedical { width: clamp(136px, 54vw, 190px); height: 44px; }
+            .logo-badge.logo-computer-center { width: clamp(122px, 47vw, 162px); height: 40px; }
+            .logo-badge.logo-spoken-english { width: clamp(124px, 48vw, 168px); height: 50px; }
+            .logo-badge.logo-main img {
+                object-position: left center;
+                transform: scale(1);
+                transform-origin: left center;
+            }
+            .logo-badge.logo-paramedical img {
+                object-position: left center;
+                transform: scale(1.02);
+                transform-origin: left center;
+            }
+            .logo-badge.logo-computer-center img {
+                object-position: left center;
+                transform: scale(1);
+                transform-origin: left center;
+            }
+            .logo-badge.logo-spoken-english img {
+                object-position: left center;
+                transform: scale(1.01);
+                transform-origin: left center;
+            }
+            .mobile-menu-btn {
+                width: 38px;
+                height: 38px;
+                flex: 0 0 auto;
+            }
         }
         @media (max-width: 768px) {
-            .logo-badge.logo-image-only { width: 158px; height: 48px; }
-            .logo-badge.logo-main { width: 120px; height: 36px; }
+            .header-wrap { height: 60px; }
+            .logo-badge.logo-main { width: clamp(106px, 48vw, 142px); height: 36px; }
+            .logo-badge.logo-paramedical { width: clamp(124px, 56vw, 174px); height: 40px; }
+            .logo-badge.logo-computer-center { width: clamp(108px, 49vw, 148px); height: 36px; }
+            .logo-badge.logo-spoken-english { width: clamp(110px, 50vw, 152px); height: 46px; }
+            .logo-badge.logo-main img { transform: scale(1); }
+            .logo-badge.logo-paramedical img { transform: scale(1.03); }
+            .logo-badge.logo-computer-center img { transform: scale(1); }
+            .logo-badge.logo-spoken-english img { transform: scale(1.02); }
+        }
+        @media (max-width: 420px) {
+            .header-wrap { padding: 0 10px; }
+            .logo-badge.logo-main { width: clamp(100px, 47vw, 130px); height: 34px; }
+            .logo-badge.logo-paramedical { width: clamp(116px, 54vw, 160px); height: 36px; }
+            .logo-badge.logo-computer-center { width: clamp(102px, 47vw, 136px); height: 34px; }
+            .logo-badge.logo-spoken-english { width: clamp(104px, 48vw, 140px); height: 54px; }
+            .logo-badge.logo-main img { transform: scale(1); }
+            .logo-badge.logo-paramedical img { transform: scale(1.04); }
+            .logo-badge.logo-computer-center img { transform: scale(1.01); }
+            .logo-badge.logo-spoken-english img { transform: scale(1.03); }
         }
 
         /* Spoken English override — unchanged */
@@ -626,7 +823,7 @@ $navBase    = $pagesPos !== false ? substr($scriptPath, 0, $pagesPos + 7) : 'pag
 
 /* LOGO SELECTION — unchanged */
 if ($isParamedicalPage) {
-    $logoPath = $navBase . '../assets/images/srm-paramedical-logo.png';
+    $logoPath = $navBase . '../assets/images/srm-hs-logo.png';
     $logoBadgeClass = 'logo-image-only logo-paramedical';
 } elseif ($isComputerCenterPage) {
     $logoPath = $navBase . '../assets/images/srm-cc-logo.png';
@@ -643,7 +840,7 @@ $hasCustomLogo = !empty($logoPath);
 
 <!-- TOP BAR -->
 <div class="topbar">
-    <span>⭐</span> Admissions Open 2026 <span>|</span> Scholarship up to <span>75%</span>
+    <span>⭐</span> Admissions Open 2026 <span>|</span> Scholarship up to <span>75%</span> for <span style="font-weight:bold;">All Computer Courses</span>
     <a href="#" onclick="openApplyModal(); return false;">Apply Now</a>
 </div>
 
@@ -734,9 +931,9 @@ $hasCustomLogo = !empty($logoPath);
            class="<?php echo $currentPage === 'index.php' ? 'active' : ''; ?>">Home</a>
         <a href="<?php echo $navBase; ?>course.php"
            class="<?php echo $currentPage === 'course.php' ? 'active' : ''; ?>">Courses</a>
-        <div id="mobileInstitutions" class="mobile-dropdown">
+        <div id="mobileInstitutions" class="mobile-dropdown open">
             <button id="mobileInstitutionsTrigger" type="button"
-                    class="mobile-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                    class="mobile-dropdown-trigger" aria-haspopup="true" aria-expanded="true">
                 Institutions <i class="fas fa-chevron-down"></i>
             </button>
             <div class="mobile-dropdown-menu">
@@ -753,7 +950,9 @@ $hasCustomLogo = !empty($logoPath);
            class="<?php echo $currentPage === 'contact.php' ? 'active' : ''; ?>">Contact</a>
         <a href="<?php echo $navBase; ?>student-corner/student-corner.php">Student Corner</a>
         <!-- STEP 1: Mobile link — changed onclick to openApplyOptions() -->
-        <a href="#" onclick="openApplyOptions(); return false;">Apply 2026</a>
+        <a href="#" class="mobile-apply-cta" onclick="openApplyOptions(); return false;">
+            <i class="fas fa-paper-plane"></i> Apply 2026
+        </a>
     </div>
 </header>
 
@@ -1368,6 +1567,10 @@ $hasCustomLogo = !empty($logoPath);
         });
     }
     if (mobileInstTrigger && mobileInstitutions) {
+        mobileInstTrigger.setAttribute(
+            'aria-expanded',
+            mobileInstitutions.classList.contains('open') ? 'true' : 'false'
+        );
         mobileInstTrigger.addEventListener('click', function () {
             var isOpen = mobileInstitutions.classList.toggle('open');
             mobileInstTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');

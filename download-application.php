@@ -1,24 +1,17 @@
 <?php
-require 'connect.php';          // ✅ root level
+require 'connect.php';
 
 $stmt = $pdo->prepare("SELECT asset_value FROM admission_assets WHERE asset_key = 'application_form_pdf' LIMIT 1");
 $stmt->execute();
 $pdfPath     = $stmt->fetchColumn() ?: null;
 $pdfFullPath = $pdfPath ? __DIR__ . '/' . $pdfPath : null;
 $pdfExists   = $pdfFullPath && file_exists($pdfFullPath);
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Application Form — SRM Education</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
 
-<?php include_once 'includes/header.php'; // ✅ root level ?>
+$seoTitle = 'Download Application Form | SRM Education';
+$seoDescription = 'Download the official SRM Education application form PDF for admissions and course enrollment.';
+?>
+
+<?php include_once 'includes/header.php'; ?>
 
 <section class="min-h-screen bg-slate-50 flex items-center justify-center py-20 px-4">
     <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 p-10 max-w-lg w-full text-center">
@@ -40,20 +33,16 @@ $pdfExists   = $pdfFullPath && file_exists($pdfFullPath);
                 <span><i class="fa-regular fa-calendar mr-1"></i> <?= date('d M Y', filemtime($pdfFullPath)) ?></span>
             </div>
 
-            <!-- href is relative to root, no ../ needed -->
             <a href="<?= htmlspecialchars($pdfPath) ?>?v=<?= filemtime($pdfFullPath) ?>"
                download="SRM_Application_Form_2026.pdf"
-               class="inline-flex items-center gap-3 bg-[#D32F2F] hover:bg-[#B71C1C] text-white
-                      px-8 py-4 rounded-2xl text-sm font-bold transition-all
-                      shadow-lg shadow-red-500/25">
+               class="inline-flex items-center gap-3 bg-[#D32F2F] hover:bg-[#B71C1C] text-white px-8 py-4 rounded-2xl text-sm font-bold transition-all shadow-lg shadow-red-500/25">
                 <i class="fa-solid fa-download"></i>
                 Download Application Form
             </a>
 
             <p class="mt-4 text-xs text-slate-400">
                 or
-                <a href="<?= htmlspecialchars($pdfPath) ?>" target="_blank"
-                   class="text-[#D32F2F] hover:underline font-semibold">
+                <a href="<?= htmlspecialchars($pdfPath) ?>" target="_blank" class="text-[#D32F2F] hover:underline font-semibold">
                     Preview in browser
                 </a>
             </p>
@@ -73,7 +62,4 @@ $pdfExists   = $pdfFullPath && file_exists($pdfFullPath);
     </div>
 </section>
 
-<?php include_once 'includes/footer.php'; // ✅ root level ?>
-
-</body>
-</html>
+<?php include_once 'includes/footer.php'; ?>
